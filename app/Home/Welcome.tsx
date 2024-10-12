@@ -1,7 +1,9 @@
 import Header from "@/components/shared/Header";
 import ImgWraper from "@/components/shared/ImgWraper";
+import { Button } from "@/components/ui/button";
 import { IMGS } from "@/utilities/Image";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
@@ -43,10 +45,15 @@ export default function Welcome() {
           tortor augue. Velit nascetur proin massa in. Consequat faucibus
           porttitor enim et.
         </p>
-        <button className="text-secondary flex justify-center items-center gap-2 m-auto">
-          Learn More
-          <FaArrowRight className="text-primary" />
-        </button>
+        <Link href="/About">
+          <Button
+            variant="link"
+            className="text-secondary flex justify-center items-center gap-2 m-auto"
+          >
+            Learn More
+            <FaArrowRight className="text-primary" />
+          </Button>
+        </Link>
         <ImgWraper
           className=" md:w-2/3 w-[95%] md:h-[30vh] h-[15vh]  "
           src={IMGS.welcome}

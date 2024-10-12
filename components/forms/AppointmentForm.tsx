@@ -34,7 +34,6 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 
-// Define the schema with additional fields
 const formSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
@@ -65,9 +64,7 @@ const Times = [
 ];
 export default function AppointmentForm() {
   const [date, setDate] = useState<Date>();
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-  }
+  function onSubmit(values: z.infer<typeof formSchema>) {}
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -81,7 +78,7 @@ export default function AppointmentForm() {
   return (
     <Form {...form}>
       <form
-        className="flex flex-col text-white md:text-base text-xs"
+        className="flex flex-col  text-white md:text-base text-xs"
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <div className="grid md:grid-cols-2 w-full">
@@ -187,7 +184,7 @@ export default function AppointmentForm() {
         </div>
         <textarea
           placeholder="Message"
-          className=" w-full min-h-40 p-3 bg-primary border-x-[1px] focus:outline-none"
+          className=" w-full min-h-40 p-3 bg-primary border-t border-x-[1px] focus:outline-none"
         />
         <Button
           className="w-full bg-accent text-primary font-normal uppercase border-x-[1px]"

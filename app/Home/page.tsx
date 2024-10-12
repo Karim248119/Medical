@@ -9,7 +9,9 @@ import Services from "./Services";
 import Specialties from "./Specialties";
 import Doctors from "./Doctors";
 import Appointment from "./Appointment";
-import News from "@/components/News";
+import News from "@/app/Home/News";
+import UserLayout from "@/components/layout/UserLayout";
+import Link from "next/link";
 
 export default function HomePage() {
   const [isMobile, setIsMobile] = useState(false);
@@ -17,18 +19,15 @@ export default function HomePage() {
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
 
-    // Initial check
     handleResize();
 
-    // Add resize listener
     window.addEventListener("resize", handleResize);
 
-    // Clean up on component unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
-    <div className="">
+    <UserLayout>
       <div className=" relative w-screen md:h-[calc(100vh-160px)] h-[50vh]">
         {/* <div className="fixed z-10 w-full h-full bg-cover bg-center ">
           <div className=" h-40 w-40 rounded-full bg-secondary absolute -left-20 -top-20" />
@@ -72,7 +71,9 @@ export default function HomePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 1 }}
             >
-              <Button title="Our Services" />
+              <Link href="#Specialities">
+                <Button title="Our Specialities" />
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -85,6 +86,6 @@ export default function HomePage() {
         <Doctors />
         <News />
       </div>
-    </div>
+    </UserLayout>
   );
 }

@@ -14,27 +14,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
-import { format } from "date-fns";
 
-// Define the schema with additional fields
 const formSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
@@ -54,9 +35,7 @@ const formSchema = z.object({
 
 export default function ContactForm() {
   const [date, setDate] = useState<Date>();
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-  }
+  function onSubmit(values: z.infer<typeof formSchema>) {}
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -69,7 +48,7 @@ export default function ContactForm() {
   return (
     <Form {...form}>
       <form
-        className="flex flex-col text-white md:text-base text-xs"
+        className="flex flex-col text-white md:text-base text-xs h-full"
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <div className="grid md:grid-cols-2 w-full">
@@ -126,7 +105,7 @@ export default function ContactForm() {
 
         <textarea
           placeholder="Message"
-          className=" w-full min-h-40 p-3 bg-primary border-x-[1px] focus:outline-none"
+          className=" w-full flex-1 p-3 bg-primary border-t border-x-[1px] focus:outline-none"
         />
         <Button
           className="w-full bg-accent text-primary font-normal uppercase border-x-[1px]"

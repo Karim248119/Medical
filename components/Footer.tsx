@@ -7,6 +7,7 @@ import {
   BiLogoLinkedin,
   BiLogoTelegram,
 } from "react-icons/bi";
+import Image from "next/image";
 
 const Socials = [<BiLogoFacebook />, <BiLogoInstagram />, <BiLogoLinkedin />];
 
@@ -14,12 +15,19 @@ export default function Footer() {
   return (
     <footer className="bg-primary w-full text-white/50 underline-offset-4  md:text-xs text-[8px] pb-5">
       <div className="grid md:grid-cols-4 md:grid-rows-1 grid-cols-2 grid-rows-2 mx-auto p-4 pt-6 md:p-6 md:px-20 md:gap-20 gap-5">
-        <div className="flex flex-col md:gap-3 gap-1 ">
+        <div className="flex flex-col md:gap-3 gap-1">
           <h3 className="text-accent md:text-4xl text-lg font-light font-serif">
             MEDECAL
           </h3>
           <p className="md:text-base text-xs">Leading the Way in Medical</p>
           <p className="md:text-base text-xs">Execellence, Trusted Care.</p>
+          {/* <Image
+            src="/assets/icons/logo2.png"
+            alt="logo"
+            width={100}
+            height={100}
+            className="h-32 w-32 mx-auto opacity-85"
+          /> */}
         </div>
         <div className="flex flex-col md:gap-3 gap-1 ">
           <h3 className="text-white md:text-xl text-sm font-semibold">

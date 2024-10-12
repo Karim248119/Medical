@@ -1,4 +1,14 @@
 import React from "react";
+import { ButtonProps } from "../ui/button";
+
+interface button extends ButtonProps {
+  title: string;
+  className?: string;
+  dark?: boolean;
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
+  icon?: React.ReactNode;
+}
 
 export default function Button({
   title,
@@ -7,14 +17,7 @@ export default function Button({
   onClick,
   type,
   icon,
-}: {
-  title: string;
-  className?: string;
-  dark?: boolean;
-  onClick?: () => void;
-  type?: "button" | "submit" | "reset";
-  icon?: React.ReactNode;
-}) {
+}: button) {
   return (
     <button
       className={`${dark ? "bg-primary text-accent" : "bg-accent text-primary"} 

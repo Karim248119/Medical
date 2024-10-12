@@ -17,7 +17,7 @@ export const SPECIALTIES = [
   { id: 3, name: "Otorhinolaryngology", icon: ear },
   { id: 4, name: "Gastroenterology", icon: gastroenterology },
   { id: 5, name: "Gynecology", icon: gynecology },
-  { id: 6, name: "Neurology", icon: neurology },
+  { id: 6, name: "Neurology", icon: neurology, description: "" },
   { id: 7, name: "Ophthalmology", icon: ophthalmology },
   { id: 8, name: "Pulmonology", icon: pulmonology },
   { id: 9, name: "Urology", icon: urology },

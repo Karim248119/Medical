@@ -5,17 +5,16 @@ import {
   BiLogoInstagram,
   BiLogoLinkedin,
 } from "react-icons/bi";
-import { CiLinkedin } from "react-icons/ci";
-import { FaLinkedin } from "react-icons/fa";
-import { IoLogoLinkedin } from "react-icons/io5";
 import Button from "../shared/Button";
+import Link from "next/link";
+import { IMG_URL } from "@/api";
 
 interface doctor {
-  id: number;
+  _id: number;
   name: string;
-  specialty: {
-    id: number;
-    name: string;
+  sp_id: {
+    _id: number;
+    title: string;
   };
   img: string;
 }
@@ -25,15 +24,15 @@ export default function DocCard({ doctor }: { doctor: doctor }) {
     <div className="h-96 w-60 bg-accent overflow-hidden rounded">
       <div className="h-2/3 w-full relative overflow-hidden">
         <img
-          src={doctor.img}
+          src={IMG_URL + doctor.img}
           alt="doc"
-          className=" h-full w-full object-cover"
+          className=" h-full w-full object-cover object-top"
         />
       </div>
       <div className="h-1/3 flex flex-col justify-between">
         <div className="flex flex-col items-center justify-center p-2 text-primary">
           <p className="text-xs mb-1">{doctor.name}</p>
-          <p className=" font-bold mb-2">{doctor.specialty.name}</p>
+          <p className=" font-bold mb-2">{doctor.sp_id.title}</p>
           <div className="flex gap-3">
             <button className="bg-primary text-accent rounded-full text-sm p-1">
               <BiLogoLinkedin />
@@ -46,12 +45,18 @@ export default function DocCard({ doctor }: { doctor: doctor }) {
             </button>
           </div>
         </div>
-
-        <Button
-          title="View Profile"
-          dark
-          className=" rounded-none w-full self-end text-xs"
-        />
+        <Link
+          href={{
+            pathname: `Doctors/${doctor._id}`,
+            query: { data: JSON.stringify(doctor) },
+          }}
+        >
+          <Button
+            title="View Profile"
+            dark
+            className=" rounded-none w-full self-end text-xs"
+          />
+        </Link>
       </div>
     </div>
   );

@@ -4,7 +4,11 @@ import { GrLocation } from "react-icons/gr";
 import { BsEnvelopeAt } from "react-icons/bs";
 import { FaRegClock } from "react-icons/fa6";
 
-export default function Contact() {
+export default function Contact({
+  isCantactPage = false,
+}: {
+  isCantactPage?: boolean;
+}) {
   const contactData = [
     {
       h: "emergancy",
@@ -13,7 +17,7 @@ export default function Contact() {
       icon: <LiaPhoneVolumeSolid />,
     },
     {
-      h: "locatio",
+      h: "location",
       p1: "166 90th North st.",
       p2: "New cairo, Egypt",
       icon: <GrLocation />,
@@ -32,16 +36,22 @@ export default function Contact() {
     },
   ];
   return (
-    <div className="md:flex hidden justify-center items-center gap-10 pb-10 pt-20">
+    <div
+      className={
+        isCantactPage
+          ? "grid grid-cols-2 grid-rows-2 gap-2 "
+          : "md:flex hidden justify-center items-center gap-10 pb-10 pt-20"
+      }
+    >
       {contactData.map((item, index) => (
         <div
           key={index}
-          className="h-48 w-52 px-8 rounded text-start flex flex-col justify-center gap-3 bg-accent text-primary hover:bg-primary hover:text-accent"
+          className="md:h-48 md:w-52 md:px-8 px-4 py-4 md:py-0 rounded text-start flex flex-col justify-center gap-3 bg-accent text-primary hover:bg-primary hover:text-accent"
         >
-          <div className="text-4xl">{item.icon}</div>
-          <h1 className="font-bold uppercase">{item.h}</h1>
-          <p className="text-xs">{item.p1}</p>
-          <p className="text-xs">{item.p2}</p>
+          <div className="md:text-4xl text-lg">{item.icon}</div>
+          <h1 className="font-bold uppercase md:text-base text-xs">{item.h}</h1>
+          <p className="md:text-xs text-[8px]">{item.p1}</p>
+          <p className="md:text-xs text-[8px]">{item.p2}</p>
         </div>
       ))}
     </div>
