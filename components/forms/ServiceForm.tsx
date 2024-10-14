@@ -169,7 +169,7 @@ const ServiceForm = ({ service }: { service?: Service }) => {
           }}
           className="w-full p-2 border border-gray-300 bg-primary"
         />
-        {/* Video Source Input */}
+        {/* Video Src */}
         <Input
           type="text"
           id="videoSrc"
@@ -179,7 +179,7 @@ const ServiceForm = ({ service }: { service?: Service }) => {
           required
           className="w-full p-2 border border-gray-300 focus:outline-none bg-primary"
         />
-        {/* Description Textarea */}
+        {/* Description */}
         <textarea
           id="description"
           placeholder="Description"
@@ -189,7 +189,7 @@ const ServiceForm = ({ service }: { service?: Service }) => {
           required
           className="w-full p-2 border-t border-gray-300 focus:outline-none bg-primary"
         />
-        {/* Submit Button */}
+        {/* Submit  */}
         <div className="text-right">
           <Button
             type="submit"

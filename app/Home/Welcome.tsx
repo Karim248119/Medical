@@ -6,32 +6,53 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaBriefcaseMedical } from "react-icons/fa6";
+import { GiHospitalCross } from "react-icons/gi";
 
 import { HiOutlineUserGroup } from "react-icons/hi2";
-import { PiMoney } from "react-icons/pi";
-import { SlCalender } from "react-icons/sl";
 
 export default function Welcome() {
   const CARDS = [
     {
       title: "Book an Appointment",
+      icon: <FaArrowLeft />,
+      path: "#appointment",
+    },
+    {
+      title: "Get a Quote",
+      icon: <FaArrowRight />,
+      path: "#our specialities",
+    },
+    {
+      title: "Meet Our Team",
+      icon: <HiOutlineUserGroup />,
+      path: "#our team",
     },
   ];
   return (
     <section className=" w-screen relative ">
       <div className="md:flex hidden gap-10 lex-col items-center justify-center absolute -top-10 left-1/2 -translate-x-1/2 text-nowrap">
-        <div className="flex items-center justify-center gap-5 h-20 px-10 rounded bg-primary text-accent">
-          <SlCalender size={50} />
-          <p>Book an Appointment</p>
-        </div>
-        <div className="flex items-center justify-center gap-5 h-20 px-10 rounded text-primary bg-accent">
+        <Link
+          href="#appointment"
+          className="flex items-center justify-center gap-5 h-20 px-10 rounded bg-primary text-accent"
+        >
+          <FaBriefcaseMedical size={50} />
+          <p>Best Services</p>
+        </Link>
+        <Link
+          href="#specialities"
+          className="flex items-center justify-center gap-5 h-20 px-10 rounded text-primary bg-accent"
+        >
+          <GiHospitalCross size={50} />
+          <p>Our Specialities</p>
+        </Link>
+        <Link
+          href="#doctors"
+          className="flex items-center justify-center gap-5 h-20 px-10 rounded text-white bg-secondary"
+        >
           <HiOutlineUserGroup size={50} />
-          <p>Book an Appointment</p>
-        </div>
-        <div className="flex items-center justify-center gap-5 h-20 px-10 rounded text-white bg-secondary">
-          <PiMoney size={50} />
-          <p>Book an Appointment</p>
-        </div>
+          <p>Meet Our Doctors</p>
+        </Link>
       </div>
       <div className=" pt-40  flex flex-col justify-center items-center text-center gap-8">
         <Header
@@ -40,10 +61,9 @@ export default function Welcome() {
         />
 
         <p className=" md:px-52 px-5 md:text-base text-sm">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-          placerat scelerisque tortor ornare ornare. Convallis felis vitae
-          tortor augue. Velit nascetur proin massa in. Consequat faucibus
-          porttitor enim et.
+          We are committed to providing the highest quality of healthcare to our
+          patients and the community. Our team of dedicated professionals works
+          tirelessly to ensure that you receive the best care possible.
         </p>
         <Link href="/About">
           <Button

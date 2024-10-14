@@ -1,4 +1,3 @@
-import { Speciality } from "@/types";
 import { BASE_URL } from ".";
 
 // Fetch all

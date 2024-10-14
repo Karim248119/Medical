@@ -5,7 +5,7 @@ import React from "react";
 
 export default function Appointment() {
   return (
-    <section className="">
+    <section id="appointment">
       <div
         className=" w-screen"
         style={{
@@ -21,11 +21,10 @@ export default function Appointment() {
               Book an Appointment
             </h2>
             <p className=" leading-loose md:text-base text-sm">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Provident incidunt ratione eum praesentium, consequatur autem
-              necessitatibus animi doloribus delectus voluptatem explicabo, sint
-              cupiditate pariatur, asperiores atque veniam sapiente quas
-              voluptatibus?
+              Schedule a consultation with our specialists at a time convenient
+              for you. Our team is dedicated to providing personalized care and
+              ensuring your health is our top priority. Fill in the form, and we
+              will confirm your appointment shortly.
             </p>
           </div>
           <div className=" md:flex justify-center items-center ">

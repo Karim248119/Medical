@@ -21,7 +21,7 @@ export default function Doctors() {
     fetchDoctors();
   }, [doctors]);
   return (
-    <div className="w-full">
+    <section className="w-full" id="doctors">
       <Header subtitle="trusted care" title="Our Doctors" className="mb-10" />
       <Carousel
         opts={{
@@ -42,6 +42,6 @@ export default function Doctors() {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-    </div>
+    </section>
   );
 }

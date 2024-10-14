@@ -21,10 +21,10 @@ export default function Button({
   return (
     <button
       className={`${dark ? "bg-primary text-accent" : "bg-accent text-primary"} 
-        py-2 px-4 flex justify-center items-center gap-3 rounded-full duration-300 hover:bg-secondary hover:text-white md:text-base text-xs ${className}`}
+        py-2 px-4 flex justify-center items-center gap-3 rounded-full duration-300 hover:bg-secondary hover:text-white md:text-base text-xs  ${className}`}
     >
-      {title}
-      {icon && icon}
+      <span>{title}</span>
+      <span>{icon && icon}</span>
     </button>
   );
 }

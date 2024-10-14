@@ -28,10 +28,10 @@ export interface Service extends Speciality {
 }
 
 export interface User {
-  _id: string;
+  _id?: string;
   name: string;
   email: string;
-  role: string;
+  role?: string;
 }
 
 export interface News {
@@ -55,4 +55,27 @@ export interface NewsArticle {
   urlToImage: string;
   publishedAt: string;
   content: string;
+}
+
+export interface Appointment {
+  _id?: string;
+  name: string;
+  gender: "male" | "female";
+  email: string;
+  phone: string;
+  date: Date;
+  time: string;
+  message?: string;
+  doctor: {
+    _id: string;
+    name: string;
+  };
+  user: {
+    _id: string;
+    name: string;
+  };
+  speciality?: {
+    _id: string;
+    title: string;
+  };
 }

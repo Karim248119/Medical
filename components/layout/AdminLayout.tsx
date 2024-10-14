@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 import Aside from "../Aside";
-import Header from "../shared/Header";
+import { useAuth } from "@/context/authContext";
 
 const AdminLayout = ({
   children,
@@ -9,6 +9,20 @@ const AdminLayout = ({
   children: ReactNode;
   title: string;
 }) => {
+  const { user } = useAuth();
+  useEffect(() => {
+    if (!user || user.role !== "admin") {
+      window.location.href = "/";
+    }
+  }, [user]);
+
+  if (!user || user.role !== "admin") {
+    return (
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        Access denied. Redirecting...
+      </div>
+    );
+  }
   return (
     <div className="flex">
       <div className=" w-1/5">

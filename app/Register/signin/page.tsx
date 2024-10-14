@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -11,6 +12,8 @@ import { IMGS } from "@/utilities/Image";
 import Image from "next/image";
 import Link from "next/link";
 import { FaEnvelope, FaLock } from "react-icons/fa";
+import { login } from "@/api/users";
+import { useAuth } from "@/context/authContext";
 
 const signinSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -28,8 +31,18 @@ export default function SigninPage() {
     resolver: zodResolver(signinSchema),
   });
 
-  const onSubmit = (data: SigninFormData) => {
-    console.log(data);
+  const { setUser } = useAuth();
+
+  const onSubmit = async (data: SigninFormData) => {
+    const response = await login(data as any);
+    if (response) {
+      setUser(response.user);
+      window.location.href = "/";
+      localStorage.setItem("token", response.user.token);
+      console.log("Login successful:", response);
+    } else {
+      console.log("Login failed");
+    }
   };
 
   return (

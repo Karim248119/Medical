@@ -13,7 +13,6 @@ export const UserLinks = [
   { name: "Doctors", path: "/Doctors" },
   { name: "News", path: "/News" },
   { name: "Contact", path: "/Contact" },
-  { name: "dashboard", path: "/admin" },
 ];
 
 export const AdminLinks = [

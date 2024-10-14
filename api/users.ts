@@ -16,16 +16,20 @@ export const getAllUsers = async (name?: string) => {
   }
 };
 
-//add
-export const addUser = async (formData: FormData) => {
+// add (register)
+export const addUser = async (formData: User) => {
   try {
     const response = await fetch(`${BASE_URL}/users/add`, {
       method: "POST",
-      body: formData,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
     });
 
     if (!response.ok) {
-      throw new Error("Failed to add User");
+      const errorData = await response.json();
+      throw new Error(errorData.error || "Failed to add User");
     }
 
     const data = await response.json();
@@ -67,6 +71,30 @@ export const updateUser = async (
     return data;
   } catch (error) {
     console.error("update User error", error);
+    return null;
+  }
+};
+
+//login
+export const login = async (formData: User) => {
+  try {
+    const response = await fetch(`${BASE_URL}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || "Failed to add User");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("add User error", error);
     return null;
   }
 };

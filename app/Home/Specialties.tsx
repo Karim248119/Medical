@@ -19,7 +19,7 @@ export default function Specialties() {
     fetchSpecialities();
   }, [specialities]);
   return (
-    <section className="-mb-20" id="Specialities">
+    <section className="-mb-20" id="specialities">
       <Header
         subtitle="Always Caring"
         title="Our Specialties"

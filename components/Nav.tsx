@@ -3,13 +3,14 @@ import { IMGS } from "@/utilities/Image";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
-import { CiSearch } from "react-icons/ci";
-import { IoCloseOutline } from "react-icons/io5";
-import Button from "./shared/Button";
+import React, { useEffect, useState } from "react";
+import { IoCloseOutline, IoLogOutOutline } from "react-icons/io5";
 import { HiBars3 } from "react-icons/hi2";
 import { UserLinks } from "./Navlinks";
 import Logo from "./Logo";
+import { useAuth } from "@/context/authContext";
+import { BiLogOut } from "react-icons/bi";
+import { Button } from "./ui/button";
 
 export default function Navbar() {
   const [IsOpened, setIsOpened] = useState(false);
@@ -31,7 +32,14 @@ export default function Navbar() {
       txt: "8:00 AM - 5:00 PM",
     },
   ];
+  const { user, isLogedin, setIsLogedin, setUser } = useAuth();
   const pathName = usePathname();
+
+  const handleLogout = () => {
+    setIsLogedin(false);
+    setUser(null);
+  };
+
   return (
     <nav className=" fixed top-0 left-0 w-screen z-50">
       <div className=" h-20 bg-white w-full flex justify-between items-center md:px-32 z-50">
@@ -74,14 +82,34 @@ export default function Navbar() {
                 </Link>
               );
             })}
+            {user?.role === "admin" && (
+              <Link href="/admin">Admin-dashboard</Link>
+            )}
           </div>
           <div className="flex justify-center items-center gap-4">
-            <button className="sm:block hidden">
-              {/* <CiSearch size={25} /> */}
-            </button>
-            <Link href="/Register/signup">
-              <Button title="Register" className="hidden md:block" />
-            </Link>
+            {user ? (
+              <div className="flex justify-center items-center gap-5">
+                <div className="text-[10px] text-white/50">
+                  <p>{user?.name}</p>
+                  <p className=" underline">{user?.email}</p>
+                </div>
+                <Button
+                  onClick={() => {
+                    handleLogout();
+                  }}
+                  className="bg-accent rounded-full text-primary gap-1"
+                >
+                  Logout
+                  <IoLogOutOutline />
+                </Button>
+              </div>
+            ) : (
+              <Link href="/Register/signup">
+                <Button className="hidden md:block bg-accent text-primary  rounded-full">
+                  Register
+                </Button>
+              </Link>
+            )}
 
             <p className=" text-accent uppercase font-serif text-xl block md:hidden ">
               MED<span className=" text-white">ECAL</span>
@@ -116,7 +144,7 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <Button title="Register" dark={true} />
+          <Button title="Register" />
         </div>
       </div>
     </nav>

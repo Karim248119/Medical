@@ -2,6 +2,7 @@ import Button from "@/components/shared/Button";
 import Header from "@/components/shared/Header";
 import ImgWraper from "@/components/shared/ImgWraper";
 import { IMGS } from "@/utilities/Image";
+import Link from "next/link";
 import React from "react";
 import { IoBandageOutline } from "react-icons/io5";
 import { LuHeartPulse } from "react-icons/lu";
@@ -53,7 +54,9 @@ export default function Services() {
               </div>
             ))}
           </div>
-          <Button title="View All" dark className=" rounded-none w-full" />
+          <Link href="/Services">
+            <Button title="View All" dark className=" rounded-none w-full" />
+          </Link>
         </div>
         <div className="col-span-4  py-4 px-16 md:flex hidden flex-col gap-5 ">
           <h4 className="text-2xl font-semibold">

@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
+import { AuthProvider } from "@/context/authContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div>{children}</div>
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

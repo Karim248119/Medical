@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,6 +11,8 @@ import { IMGS } from "@/utilities/Image";
 import Image from "next/image";
 import Link from "next/link";
 import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
+import { addUser } from "@/api/users";
+import { useAuth } from "@/context/authContext";
 
 const signupSchema = z
   .object({
@@ -29,6 +31,8 @@ const signupSchema = z
 type SignupFormData = z.infer<typeof signupSchema>;
 
 export default function SignupPage() {
+  const { setIsLogedin, setUser } = useAuth();
+
   const {
     register,
     handleSubmit,
@@ -37,8 +41,25 @@ export default function SignupPage() {
     resolver: zodResolver(signupSchema),
   });
 
-  const onSubmit = (data: SignupFormData) => {
-    console.log(data);
+  const onSubmit = async (data: SignupFormData) => {
+    try {
+      const userData = {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      };
+
+      const response = await addUser(userData);
+      if (response?.success) {
+        setUser(response.user);
+        setIsLogedin(true);
+        window.location.href = "/";
+      } else {
+        console.error("Signup failed:", response);
+      }
+    } catch (error) {
+      console.error("Signup error:", error);
+    }
   };
 
   return (
@@ -137,7 +158,11 @@ export default function SignupPage() {
           <p className="text-sm text-center">
             Already have an account?
             <Link href="/Register/signin">
-              <Button variant="link" className="text-secondary px-2">
+              <Button
+                type="submit"
+                variant="link"
+                className="text-secondary px-2"
+              >
                 Sign In
               </Button>
             </Link>

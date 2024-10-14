@@ -5,7 +5,7 @@ export default function Logo({ className }: { className?: string }) {
     <div
       className={` text-primary uppercase font-serif text-4xl md:block hidden ${className}`}
     >
-      MED<span className=" text-secondary">ECAL</span>
+      MED<span className=" text-secondary">ICAL</span>
     </div>
   );
 }

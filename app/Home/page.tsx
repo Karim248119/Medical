@@ -29,14 +29,6 @@ export default function HomePage() {
   return (
     <UserLayout>
       <div className=" relative w-screen md:h-[calc(100vh-160px)] h-[50vh]">
-        {/* <div className="fixed z-10 w-full h-full bg-cover bg-center ">
-          <div className=" h-40 w-40 rounded-full bg-secondary absolute -left-20 -top-20" />
-          <Image
-            src={window.innerWidth < 768 ? IMGS.homeMob : IMGS.home}
-            alt="home"
-            className="absolute top-0 left-0 w-full h-full object-cover"
-          />
-        </div> */}
         <div
           className="w-full h-full  text-white  flex items-center "
           style={{
@@ -71,8 +63,8 @@ export default function HomePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 1 }}
             >
-              <Link href="#Specialities">
-                <Button title="Our Specialities" />
+              <Link href="#appointment">
+                <Button title="Book an Appointment" />
               </Link>
             </motion.div>
           </div>

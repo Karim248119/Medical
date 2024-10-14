@@ -20,6 +20,8 @@ export default function DoctorProfile() {
       setDoctor(JSON.parse(data));
     }
   }, [data]);
+  console.log("Doctor:", doctor);
+  console.log("Speciality:", doctor?.sp_id);
 
   if (!doctor) return <div>Loading...</div>;
 
@@ -81,7 +83,10 @@ export default function DoctorProfile() {
                     />
                   </TabsContent>
                   <TabsContent value="appointment">
-                    <AppointmentForm />
+                    <AppointmentForm
+                      doctor={doctor}
+                      speciality={doctor.sp_id}
+                    />
                   </TabsContent>
                 </div>
               </div>
