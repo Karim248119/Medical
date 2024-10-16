@@ -32,9 +32,11 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { getAllSpecialities } from "@/api/specialities";
 import { getAllDoctors } from "@/api/doctors";
-import { Doctor, Speciality } from "@/types";
+import { Appointment, Doctor, Speciality } from "@/types";
 import { useAuth } from "@/context/authContext";
 import { createAppointment } from "@/api/appointment";
+import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
+import { getAllAppointments } from "@/api/appointment";
 
 const formSchema = z.object({
   username: z
@@ -76,6 +78,23 @@ export default function AppointmentForm({
   const [selectedSpecialityId, setSelectedSpecialityId] = useState("");
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [selectedDoctor, setSelectedDoctor] = useState("");
+  const [alert, setAlert] = useState({
+    show: false,
+    type: "success",
+    message: "",
+  });
+  const [appointments, setAppointments] = useState<Appointment[]>([]);
+
+  const handleAlert = (type: "success" | "error", message: string) => {
+    setAlert({ show: true, type, message });
+    setTimeout(() => {
+      setAlert({
+        show: false,
+        type: "success",
+        message: "",
+      });
+    }, 3000);
+  };
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -103,6 +122,17 @@ export default function AppointmentForm({
     }
   }, [selectedSpecialityId, doctor]);
 
+  useEffect(() => {
+    const fetchAppointments = async () => {
+      const response = await getAllAppointments(doctor?._id);
+      setAppointments(response.data);
+      console.log("res:", response.data);
+    };
+    if (doctor?._id) {
+      fetchAppointments();
+    }
+  }, [doctor]);
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     if (!date || !user) return;
 
@@ -122,15 +152,25 @@ export default function AppointmentForm({
 
     const result = await createAppointment(formData as any);
     if (result) {
-      window.alert("Appointment created successfully!");
+      handleAlert("success", "Appointment created successfully!");
       form.reset();
     } else {
-      window.alert("Some thing went wrong");
+      handleAlert("error", "Some thing went wrong");
     }
   };
 
   return (
     <div className="relative">
+      {alert.show && (
+        <Alert
+          className={`mb-4 fixed bottom-10 left-10 w-1/3 ${
+            alert.type === "success" ? "bg-green-500" : "bg-red-500"
+          } text-white`}
+        >
+          <AlertTitle>gchg</AlertTitle>
+          <AlertDescription>hbjhbjhbjhbhj</AlertDescription>
+        </Alert>
+      )}
       <Form {...form}>
         <form
           className="flex flex-col text-white md:text-base text-xs"
@@ -277,7 +317,6 @@ export default function AppointmentForm({
                 />
               </PopoverContent>
             </Popover>
-
             <FormField
               control={form.control}
               name="time"
@@ -286,15 +325,23 @@ export default function AppointmentForm({
                   <FormControl>
                     <Select onValueChange={field.onChange}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Time" />
+                        <SelectValue placeholder="Time " />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectGroup>
-                          {Times.map((time, index) => (
-                            <SelectItem key={index} value={time}>
-                              {time}
-                            </SelectItem>
-                          ))}
+                          {date &&
+                            Times.filter(
+                              (time) =>
+                                !appointments.some(
+                                  (appointment) =>
+                                    appointment.time === time &&
+                                    appointment.date === date?.toISOString()
+                                )
+                            ).map((time, index) => (
+                              <SelectItem key={index} value={time}>
+                                {time}
+                              </SelectItem>
+                            ))}
                         </SelectGroup>
                       </SelectContent>
                     </Select>

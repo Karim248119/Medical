@@ -19,6 +19,8 @@ import { FaEdit } from "react-icons/fa";
 import { CiSearch } from "react-icons/ci";
 import Loading from "@/components/Loading";
 
+import DeleteBtn from "@/components/shared/DeleteBtn";
+
 const UsersPage = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
@@ -89,22 +91,11 @@ const UsersPage = () => {
                             <FaEdit className="text-sm text-white" />
                           </Button>
                         </Link>
-
-                        <form
-                          action={`/users/delete/${user._id}`}
-                          method="POST"
-                        >
-                          <Button
-                            onClick={() => {
-                              deleteUser(user._id);
-                            }}
-                            variant="destructive"
-                            type="button"
-                            className="px-3 shadow rounded"
-                          >
-                            <FaTrashCan className="text-sm text-white" />
-                          </Button>
-                        </form>
+                        <DeleteBtn
+                          onClick={() => {
+                            deleteUser(user._id);
+                          }}
+                        />
                       </div>
                     </TableCell>
                   </TableRow>

@@ -17,6 +17,7 @@ import { News } from "@/types";
 import { FaTrashCan } from "react-icons/fa6";
 import { FaEdit } from "react-icons/fa";
 import { IMG_URL } from "@/api";
+import DeleteBtn from "@/components/shared/DeleteBtn";
 
 const NewsPage = () => {
   const [news, setNews] = useState<News[]>([]);
@@ -95,16 +96,11 @@ const NewsPage = () => {
                         action={`/news/delete/${newsItem._id}`}
                         method="POST"
                       >
-                        <Button
+                        <DeleteBtn
                           onClick={() => {
                             deleteNews(newsItem._id);
                           }}
-                          variant="destructive"
-                          type="button"
-                          className="px-3 shadow rounded"
-                        >
-                          <FaTrashCan className="text-sm text-white" />
-                        </Button>
+                        />
                       </form>
                     </div>
                   </TableCell>

@@ -17,6 +17,7 @@ import { Speciality } from "@/types";
 import { FaTrashCan } from "react-icons/fa6";
 import { FaEdit } from "react-icons/fa";
 import { IMG_URL } from "@/api";
+import DeleteBtn from "@/components/shared/DeleteBtn";
 
 const SpecialitiesPage = () => {
   const [specialities, setSpecialities] = useState<Speciality[]>([]);
@@ -98,16 +99,11 @@ const SpecialitiesPage = () => {
                         action={`/specialities/delete/${speciality._id}`}
                         method="POST"
                       >
-                        <Button
+                        <DeleteBtn
                           onClick={() => {
                             deleteSpeciality(speciality._id);
                           }}
-                          variant="destructive"
-                          type="button"
-                          className="px-3 shadow rounded"
-                        >
-                          <FaTrashCan className="text-sm text-white" />
-                        </Button>
+                        />
                       </form>
                     </div>
                   </TableCell>

@@ -63,7 +63,7 @@ export interface Appointment {
   gender: "male" | "female";
   email: string;
   phone: string;
-  date: Date;
+  date: string;
   time: string;
   message?: string;
   doctor: {

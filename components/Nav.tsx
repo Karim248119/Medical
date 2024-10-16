@@ -42,7 +42,7 @@ export default function Navbar() {
 
   return (
     <nav className=" fixed top-0 left-0 w-screen z-50">
-      <div className=" h-20 bg-white w-full flex justify-between items-center md:px-32 z-50">
+      <div className=" h-20 bg-white w-full flex justify-center md:justify-between items-center md:px-32 z-50">
         <Logo />
         <div className="flex gap-4 flex-wrap justify-center items-center">
           {Headers.map((header, index) => {
@@ -89,7 +89,7 @@ export default function Navbar() {
           <div className="flex justify-center items-center gap-4">
             {user ? (
               <div className="flex justify-center items-center gap-5">
-                <div className="text-[10px] text-white/50">
+                <div className="text-[10px] text-white/50 md:block hidden">
                   <p>{user?.name}</p>
                   <p className=" underline">{user?.email}</p>
                 </div>
@@ -97,7 +97,7 @@ export default function Navbar() {
                   onClick={() => {
                     handleLogout();
                   }}
-                  className="bg-accent rounded-full text-primary gap-1"
+                  className="bg-accent rounded-full text-primary gap-1 md:flex hidden"
                 >
                   Logout
                   <IoLogOutOutline />
@@ -129,7 +129,6 @@ export default function Navbar() {
           } w-[100vw] flex flex-col items-center justify-center pb-3 overflow-hidden navs sm:hidden  -z-20 bg-accent text-xs text-center gap-2 font-semibold fixed  transition-all ease duration-700`}
         >
           <div className=" -mt-10 mb-10"></div>
-
           {UserLinks.map((link) => {
             return (
               <Link
@@ -144,7 +143,29 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <Button title="Register" />
+          {user ? (
+            <div className="flex justify-center items-center gap-5">
+              <div className="text-[10px] text-white/50 hidden">
+                <p>{user?.name}</p>
+                <p className=" underline">{user?.email}</p>
+              </div>
+              <Button
+                onClick={() => {
+                  handleLogout();
+                }}
+                className="bg-primary rounded-full text-accent gap-1 w-[90%]"
+              >
+                Logout
+                <IoLogOutOutline size={20} />
+              </Button>
+            </div>
+          ) : (
+            <Link href="/Register/signup">
+              <Button className="hidden md:block bg-primary text-accent w-[90%] rounded-full">
+                Register
+              </Button>
+            </Link>
+          )}
         </div>
       </div>
     </nav>

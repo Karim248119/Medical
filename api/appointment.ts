@@ -1,9 +1,9 @@
 import { BASE_URL } from ".";
 
 // Fetch all appointment
-export const getAllAppointments = async () => {
+export const getAllAppointments = async (doctorID: string | undefined) => {
   try {
-    const response = await fetch(`${BASE_URL}/appointment`);
+    const response = await fetch(`${BASE_URL}/appointment?doctor=${doctorID}`);
     if (!response.ok) {
       throw new Error("Failed to fetch appointment");
     }

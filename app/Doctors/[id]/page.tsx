@@ -2,29 +2,35 @@
 import { IMG_URL } from "@/api";
 import AppointmentForm from "@/components/forms/AppointmentForm";
 import UserLayout from "@/components/layout/UserLayout";
-import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Doctor } from "@/types";
+import { time } from "console";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-
+import { IoPhonePortraitOutline } from "react-icons/io5";
+import { MdOutlinePhoneInTalk } from "react-icons/md";
 export default function DoctorProfile() {
   const searchParams = useSearchParams();
   const data = searchParams.get("data");
   const [doctor, setDoctor] = useState<Doctor | null>(null);
-  const [date, setDate] = useState<Date | undefined>(new Date());
 
   useEffect(() => {
     if (data) {
       setDoctor(JSON.parse(data));
     }
   }, [data]);
-  console.log("Doctor:", doctor);
-  console.log("Speciality:", doctor?.sp_id);
 
   if (!doctor) return <div>Loading...</div>;
-
+  const workDays = [
+    { day: "Monday", time: "09:00 AM - 05:00 PM" },
+    { day: "Tuesday", time: "09:00 AM - 05:00 PM" },
+    { day: "Wednesday", time: "09:00 AM - 05:00 PM" },
+    { day: "Thursday", time: "09:00 AM - 05:00 PM" },
+    { day: "Friday", time: "09:00 AM - 05:00 PM" },
+    { day: "Saturday", time: "09:00 AM - 05:00 PM" },
+    { day: "Sunday", time: "Closed" },
+  ];
   return (
     <UserLayout>
       <div className="grid md:grid-cols-6">
@@ -93,8 +99,8 @@ export default function DoctorProfile() {
             </Tabs>
           </div>
         </div>
-        <div className=" md:col-span-2 flex md:justify-start justify-center h-[80vh] ">
-          <div className="bg-white md:p-10 pt-10">
+        <div className=" md:col-span-2 flex md:justify-start justify-center h-[80vh] my-8 md:m-0">
+          {/* <div className="bg-white md:p-10 pt-10">
             <div className="bg-primary text-white font-serif font-semibold text-center p-3 rounded-t">
               Booking Availability
             </div>
@@ -105,6 +111,33 @@ export default function DoctorProfile() {
               className="rounded-md border "
               captionLayout="dropdown"
             />
+          </div> */}
+          <div className="bg-white md:p-10 ">
+            <div className="bg-primary px-5 py-10 rounded-sm">
+              <h2 className=" font-serif font-semibold text-accent md:text-3xl text-xl text-center">
+                Shedule hours
+              </h2>
+              <div className="md:mt-10 mt-8">
+                {workDays.map((item, index) => (
+                  <div
+                    key={index}
+                    className="grid grid-cols-5 items-center mb-5 md:text-xs text-[10px]"
+                  >
+                    <div className="col-span-2 text-white">{item.day}</div>
+                    <div className="col-span-1 w-6 md:h-[2px] h-[1px] bg-accent" />
+                    <div className="col-span-2 text-white ">{item.time}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="w-[80%] md:h-[2px] h-[1px] bg-accent m-auto my-6" />
+              <div className="flex justify-center items-center gap-2">
+                <MdOutlinePhoneInTalk className="text-4xl md:text-6xl text-accent" />
+                <div className="flex flex-col">
+                  <p className="text-white md:text-2xl text-lg">Emergency</p>
+                  <p className="text-accent">(237) 681-812-255</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

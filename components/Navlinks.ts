@@ -25,6 +25,6 @@ export const AdminLinks = [
   },
   { name: " Services", path: "/admin/services", icon: FaHandHoldingMedical },
   { name: " News", path: "/admin/news", icon: FaNewspaper },
-  { name: " appointment", path: "/admin/appointments", icon: IoCalendar },
+  { name: " appointments", path: "/admin/appointments", icon: IoCalendar },
   { name: "Home", path: "/", icon: IoArrowBackCircle },
 ];

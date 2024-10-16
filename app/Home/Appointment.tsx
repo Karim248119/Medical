@@ -1,7 +1,7 @@
 import AppointmentForm from "@/components/forms/AppointmentForm";
 import Header from "@/components/shared/Header";
 import { IMGS } from "@/utilities/Image";
-import React from "react";
+import React, { useState } from "react";
 
 export default function Appointment() {
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,6 +32,7 @@ export default function SigninPage() {
   });
 
   const { setUser } = useAuth();
+  const [invalide, setInvalide] = useState<boolean>(false);
 
   const onSubmit = async (data: SigninFormData) => {
     const response = await login(data as any);
@@ -41,6 +42,7 @@ export default function SigninPage() {
       localStorage.setItem("token", response.user.token);
       console.log("Login successful:", response);
     } else {
+      setInvalide(true);
       console.log("Login failed");
     }
   };
@@ -102,7 +104,9 @@ export default function SigninPage() {
           <Button type="submit" className="w-full">
             Sign In
           </Button>
-
+          {invalide && (
+            <p className="text-red-500">Invalide email or password</p>
+          )}
           <p className="text-sm text-center">
             Don't have an account?
             <Link href="/Register/signup">

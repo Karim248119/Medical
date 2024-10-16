@@ -29,7 +29,7 @@ export default function Services() {
       {loading ? (
         <Loading />
       ) : (
-        <div className="grid md:grid-cols-3 grid-cols-1 md:w-2/3 w-[90%] mx-auto md:gap-5 md:mt-20 gap-2 mt-8">
+        <div className="grid md:grid-cols-3 grid-cols-1 md:w-2/3 w-[90%] mx-auto gap-5 md:mt-20 pb-5 mt-8">
           {services.map((service, index) => (
             <ServiceCard key={index} service={service} />
           ))}

@@ -17,6 +17,7 @@ import { Service } from "@/types";
 import { FaTrashCan } from "react-icons/fa6";
 import { FaEdit } from "react-icons/fa";
 import { IMG_URL } from "@/api";
+import DeleteBtn from "@/components/shared/DeleteBtn";
 
 const ServicesPage = () => {
   const [services, setServices] = useState<Service[]>([]);
@@ -100,16 +101,11 @@ const ServicesPage = () => {
                         action={`/services/delete/${service._id}`}
                         method="POST"
                       >
-                        <Button
+                        <DeleteBtn
                           onClick={() => {
                             deleteService(service._id);
                           }}
-                          variant="destructive"
-                          type="button"
-                          className="px-3 shadow rounded"
-                        >
-                          <FaTrashCan className="text-sm text-white" />
-                        </Button>
+                        />
                       </form>
                     </div>
                   </TableCell>

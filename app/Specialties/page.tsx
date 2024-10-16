@@ -26,9 +26,12 @@ export default function page() {
   return (
     <UserLayout noContact={true}>
       <SubHead path="Home / Specialities" title={`${speciality.title}`} />
-      <div className="p-20 flex gap-5 justify-center">
-        <img src={IMG_URL + speciality.img} className="h-20 w-20" />
-        <p className="w-2/3 space-y-5 leading-9 text-lg text-black/60">
+      <div className="md:p-20 md:py-20 py-10 flex gap-5 justify-center">
+        <img
+          src={IMG_URL + speciality.img}
+          className="md:h-20 md:w-20 h-10 w-10"
+        />
+        <p className="w-2/3 space-y-5 mdleading-9 md:text-lg text-xs text-black/60">
           {speciality.description}
         </p>
       </div>
@@ -37,7 +40,7 @@ export default function page() {
         {loading ? (
           <Loading />
         ) : (
-          <div className=" w-screen flex justify-center gap-5">
+          <div className=" w-screen flex flex-wrap justify-center gap-5">
             {doctors.map((doctor, index) => (
               <DocCard key={index} doctor={doctor} />
             ))}

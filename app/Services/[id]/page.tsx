@@ -43,9 +43,9 @@ export default function ServicePage() {
       {loading ? (
         <Loading />
       ) : (
-        <div className="w-2/3 mx-auto mt-20 grid grid-cols-4 gap-10">
+        <div className="md:w-2/3 px-5 md:px-0 mx-auto  md:grid grid-cols-4 gap-10 pt-8 md:pt-20 pb-8 md:pb-0">
           <div className="col-span-1">
-            <div>
+            <div className=" grid grid-cols-2 md:grid-cols-1 mb-5 md:mb-0">
               {services.map((item: Service, index) => (
                 <Link
                   href={{
@@ -64,10 +64,12 @@ export default function ServicePage() {
                     <img
                       src={IMG_URL + item.icon}
                       alt={item.title}
-                      className="h-10 aspect-square mx-auto"
+                      className="md:h-10 h-5 aspect-square mx-auto"
                     />
                   </div>
-                  <p className="w-2/3 capitalize">{item.title}</p>
+                  <p className="w-2/3 capitalize md:text-base text-xs">
+                    {item.title}
+                  </p>
                 </Link>
               ))}
             </div>
@@ -80,10 +82,10 @@ export default function ServicePage() {
               <p>No video available for this service.</p>
             )}
             <div className="mt-8">
-              <h2 className="font-serif text-primary font-semibold text-4xl mb-4">
+              <h2 className="font-serif text-primary font-semibold md:text-4xl text-3xl mb-4">
                 {service.title || "Service Title"}
               </h2>
-              <p className="text-black/80 leading-8">
+              <p className="text-black/80 leading-8 text-base md:text-xs">
                 {service.description ||
                   "No description available for this service."}
               </p>

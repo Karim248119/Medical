@@ -10,7 +10,6 @@ import Loading from "@/components/Loading";
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
