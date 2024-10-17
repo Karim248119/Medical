@@ -10,7 +10,7 @@ import { Doctor, Speciality } from "@/types";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-export default function page() {
+export default function Page() {
   const searchParams = useSearchParams();
   const speciality: Speciality = JSON.parse(searchParams.get("data") ?? "{}");
   const [doctors, setDoctors] = useState([]);
