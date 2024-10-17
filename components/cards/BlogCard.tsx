@@ -5,15 +5,28 @@ import { Button } from "../ui/button";
 import { BiCalendar, BiUser } from "react-icons/bi";
 import { NewsArticle } from "@/types";
 import Link from "next/link";
+import Image from "next/image";
+import { IMGS } from "@/utilities/Image";
 
 export default function BlogCard({ news }: { news: NewsArticle }) {
   return (
     <div className="flex flex-col md:gap-5 gap-1 items-center md:w-auto ">
       <div className="  w-full md:h-[40vh] h-[30vh] ">
-        <img
-          src={news.urlToImage}
-          className=" w-full h-full rounded-sm object-cover "
-        />
+        {!news.urlToImage ? (
+          <Image
+            alt="news"
+            width={1000}
+            height={1500}
+            src={IMGS.healthNews}
+            className=" w-full h-full rounded-sm object-cover "
+          />
+        ) : (
+          <img
+            src={news.urlToImage}
+            alt="news"
+            className=" w-full h-full rounded-sm object-cover "
+          />
+        )}
       </div>
       <div className="flex flex-col md:gap-4 gap-2 md:text-base text-[8px] w-full">
         <div className="flex items-center md:gap-10 gap-5">

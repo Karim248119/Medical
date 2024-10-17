@@ -41,7 +41,7 @@ export default function Page() {
           <Loading />
         ) : (
           <div className=" w-screen flex flex-wrap justify-center gap-5">
-            {doctors.map((doctor, index) => (
+            {doctors?.map((doctor, index) => (
               <DocCard key={index} doctor={doctor} />
             ))}
           </div>

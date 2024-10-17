@@ -71,7 +71,7 @@ export default function Quotes() {
     >
       <Carousel className=" w-full h-full bg-primary/80">
         <CarouselContent>
-          {quotes.map((quote: any, index: number) => (
+          {quotes?.map((quote: any, index: number) => (
             <CarouselItem key={index} className="basis-1/1 ">
               <div className="flex w-screen h-[50vh] flex-col gap-8 justify-center items-center text-white text-center px-3">
                 <MdFormatQuote className="md:text-6xl text-4xl text-accent" />

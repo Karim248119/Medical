@@ -55,7 +55,7 @@ const ServicesPage = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {services.map((service, index) => (
+              {services?.map((service, index) => (
                 <TableRow
                   key={service._id}
                   className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}

@@ -97,7 +97,7 @@ export default function Doctors() {
           <SelectContent>
             <SelectItem value={"all"}>All</SelectItem>
 
-            {specialities.map((speciality: Speciality, index) => (
+            {specialities?.map((speciality: Speciality, index) => (
               <SelectItem key={index} value={speciality._id as string}>
                 {speciality.title}
               </SelectItem>
@@ -118,7 +118,7 @@ export default function Doctors() {
         <Loading />
       ) : (
         <div className="flex flex-wrap justify-center gap-10 mt-20 w-2/3 m-auto">
-          {doctors.map((doctor, index) => (
+          {doctors?.map((doctor, index) => (
             <DocCard key={index} doctor={doctor} />
           ))}
         </div>
@@ -132,7 +132,7 @@ export default function Doctors() {
               <PaginationPrevious onClick={() => handlePageChange(page - 1)} />
             </PaginationItem>
 
-            {[...Array(totalPages)].map((_, index) => (
+            {[...Array(totalPages)]?.map((_, index) => (
               <PaginationItem key={index}>
                 <PaginationLink
                   className="rounded"

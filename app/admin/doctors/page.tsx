@@ -93,7 +93,7 @@ const DoctorsPage = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {doctors.map((doctor, index) => (
+              {doctors?.map((doctor, index) => (
                 <TableRow
                   key={doctor._id}
                   className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}

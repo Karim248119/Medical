@@ -46,7 +46,7 @@ export default function ServicePage() {
         <div className="md:w-2/3 px-5 md:px-0 mx-auto  md:grid grid-cols-4 gap-10 pt-8 md:pt-20 pb-8 md:pb-0">
           <div className="col-span-1">
             <div className=" grid grid-cols-2 md:grid-cols-1 mb-5 md:mb-0">
-              {services.map((item: Service, index) => (
+              {services?.map((item: Service, index) => (
                 <Link
                   href={{
                     pathname: `/Services/${item._id}`,

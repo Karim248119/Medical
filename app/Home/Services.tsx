@@ -44,7 +44,7 @@ export default function Services() {
       <div className="md:px-40 md:grid md:grid-cols-7">
         <div className="col-span-1 p-3 md:p-0">
           <div className="grid md:grid-rows-4 md:grid-cols-1 grid-rows-2 grid-cols-2 rounded border-[1px] ">
-            {Services.map((service, index) => (
+            {Services?.map((service, index) => (
               <div
                 key={index}
                 className="flex flex-col items-center justify-center py-4 gap-2 hover:bg-primary hover:text-accent duration-300 transition-all ease-in-out"
@@ -64,7 +64,7 @@ export default function Services() {
           </h4>
           <div className="flex justify-between">
             <div className="flex flex-col gap-4">
-              {Col1.map((text, index) => (
+              {Col1?.map((text, index) => (
                 <div key={index} className="flex  items-center gap-2">
                   <div className="h-4 w-4 rounded-full bg-secondary" />
                   <div className="">{text}</div>
@@ -72,7 +72,7 @@ export default function Services() {
               ))}
             </div>
             <div className="flex flex-col gap-4">
-              {Col2.map((text, index) => (
+              {Col2?.map((text, index) => (
                 <div key={index} className="flex  items-center gap-2">
                   <div className="h-4 w-4 rounded-full bg-secondary" />
                   <div className="">{text}</div>

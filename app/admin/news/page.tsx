@@ -59,7 +59,7 @@ const NewsPage = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {news.map((newsItem, index) => (
+              {news?.map((newsItem, index) => (
                 <TableRow
                   key={newsItem._id}
                   className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}

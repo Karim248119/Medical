@@ -67,7 +67,7 @@ const UsersPage = () => {
               {loading ? (
                 <Loading />
               ) : (
-                users.map((user, index) => (
+                users?.map((user, index) => (
                   <TableRow
                     key={user._id}
                     className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}

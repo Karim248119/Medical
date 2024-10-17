@@ -13,6 +13,7 @@ import news from "../public/assets/imgs/news.png";
 import contact from "../public/assets/imgs/contact.jpg";
 import signin from "../public/assets/imgs/register/signin.jpg";
 import signup from "../public/assets/imgs/register/signup.jpg";
+import healthNews from "../public/assets/imgs/healthNews.png";
 
 export const IMGS = {
   phone,
@@ -30,4 +31,5 @@ export const IMGS = {
   contact,
   signin,
   signup,
+  healthNews,
 };

@@ -30,7 +30,7 @@ export default function Doctors() {
         className=" w-[90%] mx-auto  "
       >
         <CarouselContent>
-          {doctors.map((doctor, index) => (
+          {doctors?.map((doctor, index) => (
             <CarouselItem
               key={index}
               className="md:basis-1/1 lg:basis-1/5 flex justify-center items-center"

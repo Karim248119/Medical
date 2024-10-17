@@ -46,7 +46,7 @@ const Page = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {appointments.map((appointment: Appointment, index) => (
+              {appointments?.map((appointment: Appointment, index) => (
                 <TableRow
                   key={appointment._id}
                   className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}

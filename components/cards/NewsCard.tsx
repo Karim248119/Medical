@@ -5,12 +5,30 @@ import { Button } from "../ui/button";
 import { BiCalendar } from "react-icons/bi";
 import { NewsArticle } from "@/types";
 import Link from "next/link";
+import { IMGS } from "@/utilities/Image";
+import Image from "next/image";
 
 export default function NewsCard({ news }: { news: NewsArticle }) {
   return (
     <div className="flex md:gap-5 gap-2 items-center md:w-auto w-[90vw]">
       <div className=" h-full w-1/3  flex-1 overflow-hidden rounded-l-lg">
-        <img src={news.urlToImage} className=" w-full h-full object-cover " />
+        {!news.urlToImage ? (
+          <Image
+            alt="news"
+            width={1000}
+            height={1500}
+            src={IMGS.healthNews}
+            className=" w-full h-full object-cover "
+          />
+        ) : (
+          <img
+            src={news.urlToImage}
+            alt="news"
+            className=" w-full h-full object-cover "
+          />
+        )}
+
+        <div>{news.urlToImage}</div>
       </div>
       <div className="flex flex-col gap-4 md:text-base text-[8px] w-2/3">
         <div className="flex  items-center gap-2">

@@ -29,7 +29,7 @@ export default function Specialties() {
         <Loading />
       ) : (
         <div className="grid md:grid-cols-4 grid-cols-2 md:grid-rows-4  md:px-40">
-          {specialities.map((item, index) => (
+          {specialities?.map((item, index) => (
             <Link
               href={{
                 pathname: "/Specialties",
