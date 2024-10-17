@@ -5,7 +5,7 @@ import SubHead from "@/components/shared/SubHead";
 import { IMGS } from "@/utilities/Image";
 import React from "react";
 
-export default function page() {
+export default function Page() {
   return (
     <UserLayout noContact={true}>
       <SubHead path="Home / Contact" title="Contact us" img={IMGS.contact} />

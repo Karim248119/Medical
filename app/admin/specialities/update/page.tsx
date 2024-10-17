@@ -1,14 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import AdminLayout from "@/components/layout/AdminLayout";
 import { addSpeciality, updateSpeciality } from "@/api/specialities";
 import { useSearchParams } from "next/navigation";
 import SpecialityForm from "@/components/forms/SpecialityForm";
 
-const page = () => {
+const Page = () => {
   const searchParams = useSearchParams();
   const speciality = JSON.parse(searchParams.get("data") ?? "{}");
   const [title, setTitle] = useState(speciality.title);
@@ -48,4 +46,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

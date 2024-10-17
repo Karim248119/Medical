@@ -8,7 +8,7 @@ import { addService, updateService } from "@/api/services";
 import { useSearchParams } from "next/navigation";
 import ServiceForm from "@/components/forms/ServiceForm";
 
-const page = () => {
+const Page = () => {
   const searchParams = useSearchParams();
   const service = JSON.parse(searchParams.get("data") ?? "{}");
   const [title, setTitle] = useState(service.title);
@@ -48,4 +48,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

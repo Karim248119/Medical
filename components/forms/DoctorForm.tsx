@@ -150,7 +150,7 @@ const DoctorDorm = ({ doctor }: { doctor?: Doctor }) => {
             >
               <option value="" disabled>
                 Select a speciality
-              </option>{" "}
+              </option>
               {/* Placeholder option */}
               {specialities.map((sp: any, index) => (
                 <option

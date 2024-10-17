@@ -8,7 +8,7 @@ import { addSpeciality } from "@/api/specialities";
 import { useSearchParams } from "next/navigation";
 import SpecialityForm from "@/components/forms/SpecialityForm";
 
-const page = () => {
+const Page = () => {
   const searchParams = useSearchParams();
   const [title, setTitle] = useState("");
   const [img, setImg] = useState<File | null>(null);
@@ -47,4 +47,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

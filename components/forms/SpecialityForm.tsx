@@ -154,7 +154,7 @@ const SpecialityForm = ({ speciality }: { speciality?: Speciality }) => {
           rows={4}
           required
           className="w-full p-2 border-t border-gray-300 focus:outline-none bg-primary"
-        />{" "}
+        />
         {/* Submit Button */}
         <div className="text-right">
           <Button

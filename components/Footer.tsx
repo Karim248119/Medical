@@ -9,7 +9,11 @@ import {
 } from "react-icons/bi";
 import Image from "next/image";
 
-const Socials = [<BiLogoFacebook />, <BiLogoInstagram />, <BiLogoLinkedin />];
+const Socials = [
+  { id: 1, icon: <BiLogoFacebook /> },
+  { id: 2, icon: <BiLogoInstagram /> },
+  { id: 3, icon: <BiLogoLinkedin /> },
+];
 
 export default function Footer() {
   return (
@@ -21,13 +25,6 @@ export default function Footer() {
           </h3>
           <p className="md:text-base text-xs">Leading the Way in Medical</p>
           <p className="md:text-base text-xs">Execellence, Trusted Care.</p>
-          {/* <Image
-            src="/assets/icons/logo2.png"
-            alt="logo"
-            width={100}
-            height={100}
-            className="h-32 w-32 mx-auto opacity-85"
-          /> */}
         </div>
         <div className="flex flex-col md:gap-3 gap-1 ">
           <h3 className="text-white md:text-xl text-sm font-semibold">
@@ -72,10 +69,10 @@ export default function Footer() {
         <div className="flex text-primary  justify-between items-center gap-3 ">
           {Socials.map((social, index) => (
             <button
-              key={index}
+              key={social.id}
               className="md:p-2 p-1 bg-accent rounded-full md:text-xl "
             >
-              {social}
+              {social.icon}
             </button>
           ))}
         </div>
