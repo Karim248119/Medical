@@ -108,7 +108,7 @@ export default function SigninPage() {
             <p className="text-red-500">Invalide email or password</p>
           )}
           <p className="text-sm text-center">
-            Don't have an account?
+            Don&apos;t have an account?
             <Link href="/Register/signup">
               <Button variant="link" className="text-secondary px-2">
                 Sign Up
