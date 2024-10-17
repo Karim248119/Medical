@@ -1,4 +1,3 @@
-export const BASE_URL = "http://localhost:8000/api";
-export const IMG_URL = "http://localhost:8000";
-export const NEWS_API =
-  "https://newsapi.org/v2/top-headlines?q=&category=health&page=1&limits=4&apiKey=0b4931e434024a13940b07eb5df2ab99";
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+export const IMG_URL = process.env.NEXT_PUBLIC_IMG_URL;
+export const NEWS_API_KEY = process.env.NEXT_PUBLIC_NEWS_API_KEY;

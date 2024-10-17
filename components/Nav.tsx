@@ -143,6 +143,11 @@ export default function Navbar() {
               </Link>
             );
           })}
+          {user?.role === "admin" && (
+            <Link className="text-primary hover:text-secondary" href="/admin">
+              Admin-dashboard
+            </Link>
+          )}
           {user ? (
             <div className="flex justify-center items-center gap-5">
               <div className="text-[10px] text-white/50 hidden">
@@ -161,7 +166,7 @@ export default function Navbar() {
             </div>
           ) : (
             <Link href="/Register/signup">
-              <Button className="hidden md:block bg-primary text-accent w-[90%] rounded-full">
+              <Button className=" md:block bg-primary text-accent w-[90%] rounded-full">
                 Register
               </Button>
             </Link>
