@@ -1,69 +1,61 @@
 "use client";
 import { IMGS } from "@/utilities/Image";
-import React, { useEffect, useState } from "react";
+import React, { useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
-import { FaQuoteRight } from "react-icons/fa";
 import { MdFormatQuote } from "react-icons/md";
 import Autoplay from "embla-carousel-autoplay";
 
 const quotes = [
   {
-    quote: "When people show you who they are believe them the first time.",
+    quote: "When people show you who they are, believe them the first time.",
     author: "Maya Angelou",
   },
-
   {
     quote:
       "A woman unaffected by insults has made her enemies absolutely powerless.",
     author: "Entity",
   },
-
   {
     quote: "Life is the flower for which love is the honey.",
     author: "Victor Hugo",
   },
-
   {
     quote:
-      "Love’s greatest gift is its ability to make everything it touches, sacred.",
+      "Love’s greatest gift is its ability to make everything it touches sacred.",
     author: "Barbara De Angelis",
   },
-
   {
-    quote: "Be yourself as everyone else is taken.",
+    quote: "Be yourself; everyone else is already taken.",
     author: "Oscar Wilde",
   },
-
   {
     quote:
-      "Your practice of forgiveness is your ticket to clarity, vitality and freedom",
+      "Your practice of forgiveness is your ticket to clarity, vitality, and freedom.",
     author: "Iyanla Vanzant",
   },
-
   {
     quote: "Change the world by being yourself.",
     author: "Amy Poehler",
   },
-
   {
     quote: "Every moment is a fresh beginning.",
     author: "T.S. Eliot",
   },
-
   {
     quote: "Simplicity is the ultimate sophistication.",
-    author: "Leonardo De Vinci",
+    author: "Leonardo Da Vinci",
   },
-
   {
-    quote: "What we think we become.",
+    quote: "What we think, we become.",
     author: "Buddha",
   },
 ];
+
 export default function Quotes() {
-  const plugin = React.useRef(
+  const plugin = useRef<ReturnType<typeof Autoplay>>(
     Autoplay({ delay: 2000, stopOnInteraction: true })
   );
+
   return (
     <div
       className="w-full h-[50vh] my-20"
@@ -76,14 +68,14 @@ export default function Quotes() {
     >
       <Carousel
         plugins={[plugin.current]}
-        className=" w-full h-full bg-primary/80"
+        className="w-full h-full bg-primary/80"
       >
         <CarouselContent>
-          {quotes.map((quote: any, index: number) => (
-            <CarouselItem key={index} className="basis-1/1 ">
+          {quotes.map((quote, index) => (
+            <CarouselItem key={index} className="basis-1/1">
               <div className="flex w-screen h-[50vh] flex-col gap-8 justify-center items-center text-white text-center px-3">
                 <MdFormatQuote className="md:text-6xl text-4xl text-accent" />
-                <p className="md:text-2xl text-lg  ">{quote.quote}</p>
+                <p className="md:text-2xl text-lg">{quote.quote}</p>
                 <div className="md:h-[2px] h-[1px] md:w-1/4 w-1/3 bg-accent" />
                 <p className="md:text-base text-sm">{quote.author}</p>
               </div>
