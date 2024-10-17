@@ -16,7 +16,6 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { NEWS_API_KEY } from "@/api";
 
 export default function News() {
   const [news, setNews] = useState<NewsArticle[]>([]);
@@ -25,7 +24,7 @@ export default function News() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1); // to store total pages
 
-  const NEWS_API = `https://newsapi.org/v2/top-headlines?q=${query}&category=health&page=${page}&apiKey=${NEWS_API_KEY}`;
+  const NEWS_API = `https://newsapi.org/v2/top-headlines?q=${query}&category=health&page=${page}&apiKey=0b4931e434024a13940b07eb5df2ab99`;
 
   useEffect(() => {
     const fetchNews = async () => {

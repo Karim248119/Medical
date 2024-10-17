@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import NewsCard from "@/components/cards/NewsCard";
 import Header from "@/components/shared/Header";
-import { NEWS_API_KEY } from "@/api";
 import { NewsArticle } from "@/types";
 import Loading from "@/components/Loading";
 
 export default function News() {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
-  const NEWS_API = `https://newsapi.org/v2/top-headlines?category=health&page=1&apiKey=${NEWS_API_KEY}`;
+  const NEWS_API = `https://newsapi.org/v2/top-headlines?category=health&page=1&apiKey=0b4931e434024a13940b07eb5df2ab99`;
   useEffect(() => {
     const fetchNews = async () => {
       try {

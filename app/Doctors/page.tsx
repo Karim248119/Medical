@@ -118,7 +118,7 @@ export default function Doctors() {
         <Loading />
       ) : (
         <div className="flex flex-wrap justify-center gap-10 mt-20 w-2/3 m-auto">
-          {doctors?.map((doctor, index) => (
+          {doctors.map((doctor, index) => (
             <DocCard key={index} doctor={doctor} />
           ))}
         </div>
@@ -127,12 +127,12 @@ export default function Doctors() {
       {/* Pagination Section */}
       {totalPages > 1 && (
         <Pagination className="mt-8">
-          <PaginationContent>
+          <PaginationContent className="px-5 flex flex-wrap justify-center">
             <PaginationItem>
               <PaginationPrevious onClick={() => handlePageChange(page - 1)} />
             </PaginationItem>
 
-            {[...Array(totalPages)]?.map((_, index) => (
+            {[...Array(totalPages)].map((_, index) => (
               <PaginationItem key={index}>
                 <PaginationLink
                   className="rounded"
