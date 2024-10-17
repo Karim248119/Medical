@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import AdminLayout from "@/components/layout/AdminLayout";
 import { addSpeciality, updateSpeciality } from "@/api/specialities";
 import { useSearchParams } from "next/navigation";
 import SpecialityForm from "@/components/forms/SpecialityForm";
 
-const Page = () => {
+const UpdateSpeciality = () => {
   const searchParams = useSearchParams();
   const speciality = JSON.parse(searchParams.get("data") ?? "{}");
   const [title, setTitle] = useState(speciality.title);
@@ -46,4 +46,13 @@ const Page = () => {
   );
 };
 
-export default Page;
+import React from "react";
+import Loading from "@/components/Loading";
+
+export default function page() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <UpdateSpeciality />
+    </Suspense>
+  );
+}

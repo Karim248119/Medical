@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import AdminLayout from "@/components/layout/AdminLayout";
@@ -8,7 +8,7 @@ import { addService } from "@/api/services";
 import { useSearchParams } from "next/navigation";
 import ServiceForm from "@/components/forms/ServiceForm";
 
-const Page = () => {
+function AddDoctor() {
   const searchParams = useSearchParams();
   const [title, setTitle] = useState("");
   const [img, setImg] = useState<File | null>(null);
@@ -45,6 +45,15 @@ const Page = () => {
       <ServiceForm />
     </AdminLayout>
   );
-};
+}
 
-export default Page;
+import React from "react";
+import Loading from "@/components/Loading";
+
+export default function page() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <AddDoctor />
+    </Suspense>
+  );
+}

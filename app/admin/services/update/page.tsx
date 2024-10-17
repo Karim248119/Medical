@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import AdminLayout from "@/components/layout/AdminLayout";
@@ -8,7 +8,7 @@ import { addService, updateService } from "@/api/services";
 import { useSearchParams } from "next/navigation";
 import ServiceForm from "@/components/forms/ServiceForm";
 
-const Page = () => {
+const UpdateService = () => {
   const searchParams = useSearchParams();
   const service = JSON.parse(searchParams.get("data") ?? "{}");
   const [title, setTitle] = useState(service.title);
@@ -48,4 +48,13 @@ const Page = () => {
   );
 };
 
-export default Page;
+import React from "react";
+import Loading from "@/components/Loading";
+
+export default function page() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <UpdateService />
+    </Suspense>
+  );
+}

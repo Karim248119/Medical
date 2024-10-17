@@ -40,10 +40,8 @@ export default function SigninPage() {
       setUser(response.user);
       window.location.href = "/";
       localStorage.setItem("token", response.user.token);
-      console.log("Login successful:", response);
     } else {
       setInvalide(true);
-      console.log("Login failed");
     }
   };
 

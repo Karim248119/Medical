@@ -8,9 +8,9 @@ import Header from "@/components/shared/Header";
 import SubHead from "@/components/shared/SubHead";
 import { Doctor, Speciality } from "@/types";
 import { useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
-export default function Page() {
+function Specialities() {
   const searchParams = useSearchParams();
   const speciality: Speciality = JSON.parse(searchParams.get("data") ?? "{}");
   const [doctors, setDoctors] = useState([]);
@@ -48,5 +48,13 @@ export default function Page() {
         )}
       </div>
     </UserLayout>
+  );
+}
+
+export default function page() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <Specialities />
+    </Suspense>
   );
 }

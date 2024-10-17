@@ -5,12 +5,10 @@ import UserLayout from "@/components/layout/UserLayout";
 import { Calendar } from "@/components/ui/calendar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Doctor } from "@/types";
-import { time } from "console";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { IoPhonePortraitOutline } from "react-icons/io5";
+import { Suspense, useEffect, useState } from "react";
 import { MdOutlinePhoneInTalk } from "react-icons/md";
-export default function DoctorProfile() {
+function DoctorProfile() {
   const searchParams = useSearchParams();
   const data = searchParams.get("data");
   const [doctor, setDoctor] = useState<Doctor | null>(null);
@@ -115,7 +113,7 @@ export default function DoctorProfile() {
           <div className="bg-white md:p-10 ">
             <div className="bg-primary px-5 py-10 rounded-sm">
               <h2 className=" font-serif font-semibold text-accent md:text-3xl text-xl text-center">
-                Shedule hours
+                Schedule hours
               </h2>
               <div className="md:mt-10 mt-8">
                 {workDays.map((item, index) => (
@@ -142,5 +140,16 @@ export default function DoctorProfile() {
         </div>
       </div>
     </UserLayout>
+  );
+}
+
+import React from "react";
+import Loading from "@/components/Loading";
+
+export default function Page() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <DoctorProfile />
+    </Suspense>
   );
 }

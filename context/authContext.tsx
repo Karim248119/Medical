@@ -16,24 +16,27 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLogedin, setIsLogedin] = useState<boolean>(false);
+  const [isClient, setIsClient] = useState(false); // Flag to check if client-side
 
   useEffect(() => {
-    // Ensure this runs only on the client-side
+    setIsClient(true); // Now it's safe to access client-side storage
+
     if (typeof window !== "undefined") {
-      const storedUser = localStorage.getItem("user");
+      const storedUser = sessionStorage.getItem("user");
       setUser(storedUser ? JSON.parse(storedUser) : null);
     }
   }, []);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (user) {
-        localStorage.setItem("user", JSON.stringify(user));
-      } else {
-        localStorage.removeItem("user");
-      }
+    if (isClient && user) {
+      sessionStorage.setItem("user", JSON.stringify(user));
     }
-  }, [user]);
+  }, [user, isClient]);
+
+  if (!isClient) {
+    // If it's still server-side, avoid rendering the children to prevent mismatches
+    return null;
+  }
 
   return (
     <AuthContext.Provider value={{ user, setUser, isLogedin, setIsLogedin }}>

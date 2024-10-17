@@ -10,9 +10,9 @@ import { Service } from "@/types";
 import { IMGS } from "@/utilities/Image";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
-export default function ServicePage() {
+function ServicePage() {
   const searchParams = useSearchParams();
   const service: Service = JSON.parse(searchParams.get("data") ?? "{}");
   const [services, setServices] = useState<Service[]>([]);
@@ -94,5 +94,13 @@ export default function ServicePage() {
         </div>
       )}
     </UserLayout>
+  );
+}
+
+export default function page() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <ServicePage />
+    </Suspense>
   );
 }

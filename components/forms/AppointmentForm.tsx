@@ -126,7 +126,6 @@ export default function AppointmentForm({
     const fetchAppointments = async () => {
       const response = await getAllAppointments(doctor?._id);
       setAppointments(response.data);
-      console.log("res:", response.data);
     };
     if (doctor?._id) {
       fetchAppointments();
@@ -148,7 +147,6 @@ export default function AppointmentForm({
       user: user._id,
       speciality: speciality?._id || selectedSpecialityId,
     };
-    console.log(formData);
 
     const result = await createAppointment(formData as any);
     if (result) {
