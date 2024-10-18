@@ -165,8 +165,14 @@ export default function AppointmentForm({
             alert.type === "success" ? "bg-green-500" : "bg-red-500"
           } text-white`}
         >
-          <AlertTitle>gchg</AlertTitle>
-          <AlertDescription>hbjhbjhbjhbhj</AlertDescription>
+          <AlertTitle>
+            {alert.type === "success" ? "Success" : "failed"}
+          </AlertTitle>
+          <AlertDescription>
+            {alert.type === "success"
+              ? "Appointment created successfully!"
+              : "Failed to book an appointment"}
+          </AlertDescription>
         </Alert>
       )}
       <Form {...form}>
@@ -356,7 +362,7 @@ export default function AppointmentForm({
               <FormItem className="flex ">
                 <FormControl>
                   <textarea
-                    placeholder="Message (Optional)"
+                    placeholder="Message"
                     className="rounded-none flex flex-1 p-3 border outline-none"
                     {...field}
                   />
