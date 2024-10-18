@@ -22,7 +22,7 @@ export default function News() {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1); // to store total pages
+  const [totalPages, setTotalPages] = useState(1);
 
   const NEWS_API = `https://newsapi.org/v2/top-headlines?q=${query}&category=health&page=${page}&apiKey=0b4931e434024a13940b07eb5df2ab99`;
 
@@ -32,20 +32,25 @@ export default function News() {
       try {
         const response = await fetch(NEWS_API);
         const data = await response.json();
-        const filteredNews = data.articles.filter(
-          (article: NewsArticle) =>
-            article.title !== "[Removed]" &&
-            article.description !== "[Removed]" &&
-            article.source.name !== "[Removed]"
-        );
+
+        const filteredNews = Array.isArray(data.articles)
+          ? data.articles.filter(
+              (article: NewsArticle) =>
+                article.title !== "[Removed]" &&
+                article.description !== "[Removed]" &&
+                article.source.name !== "[Removed]"
+            )
+          : [];
+
         setNews(filteredNews);
         setTotalPages(Math.ceil(data.totalResults / 20));
-        setLoading(false);
       } catch (error) {
-        console.error(error);
+        console.error("Failed to fetch news:", error);
+      } finally {
         setLoading(false);
       }
     };
+
     fetchNews();
   }, [query, page]);
 
@@ -71,6 +76,7 @@ export default function News() {
         />
         <CiSearch className="mr-4 h-10 text-accent text-3xl" />
       </div>
+
       {loading ? (
         <Loading />
       ) : (
@@ -80,10 +86,11 @@ export default function News() {
           ))}
         </div>
       )}
+
       {/* Pagination Section */}
       {totalPages > 1 && (
         <Pagination className="mt-8">
-          <PaginationContent>
+          <PaginationContent className="flex flex-wrap">
             <PaginationItem>
               <PaginationPrevious onClick={() => handlePageChange(page - 1)} />
             </PaginationItem>
