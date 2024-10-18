@@ -79,3 +79,21 @@ export interface Appointment {
     title: string;
   };
 }
+
+export interface Resource {
+  Type: string;
+  Id: string;
+  Title: string;
+  TranslationId: string;
+  TranslationTitle: string;
+  Categories: string;
+  Populations: string;
+  MyHFTitle: string;
+  MyHFDescription: string; // This could be HTML
+  MyHFCategory: string;
+  MyHFCategoryHeading: string; // This could be HTML
+  LastUpdate: string;
+  ImageUrl: string;
+  ImageAlt: string;
+  AccessibleVersion: string;
+}
