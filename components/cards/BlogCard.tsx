@@ -11,22 +11,12 @@ import { IMGS } from "@/utilities/Image";
 export default function BlogCard({ news }: { news: Resource }) {
   return (
     <div className="flex flex-col md:gap-5 gap-1 items-center md:w-auto ">
-      <div className="  w-full md:h-[40vh] h-[30vh] ">
-        {!news.ImageUrl ? (
-          <Image
-            alt={news.ImageAlt}
-            width={1000}
-            height={1500}
-            src={IMGS.healthNews}
-            className=" w-full h-full rounded-sm object-cover "
-          />
-        ) : (
-          <img
-            src={news.ImageUrl}
-            alt="news"
-            className=" h-full rounded-sm object-cover "
-          />
-        )}
+      <div className="  w-full  ">
+        <img
+          src={news.ImageUrl}
+          alt="news"
+          className="w-full aspect-[20/19] rounded-sm object-cover "
+        />
       </div>
       <div className="flex flex-col md:gap-4 gap-2 md:text-base text-[8px] w-full">
         <div className="flex items-center md:gap-10 gap-5">

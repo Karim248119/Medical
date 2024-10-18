@@ -3,10 +3,18 @@ import BlogCard from "@/components/cards/BlogCard";
 import UserLayout from "@/components/layout/UserLayout";
 import Loading from "@/components/Loading";
 import SubHead from "@/components/shared/SubHead";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { IMGS } from "@/utilities/Image";
 import React, { useEffect, useState } from "react";
-import { CiSearch } from "react-icons/ci";
 
 export default function HealthFinder() {
   const [data, setData] = useState<any>(null);
@@ -34,17 +42,34 @@ export default function HealthFinder() {
     };
 
     fetchData();
-  }, []);
+  }, [age, gender]);
 
   return (
     <UserLayout>
       <SubHead path="Home / News" title="Blog Posts" img={IMGS.news} />
-      <div className="md:w-1/2 w-[80vw] m-auto bg-primary rounded-full overflow-hidden flex items-center gap-5 -mt-6 z-20 absolute left-1/2 -translate-x-1/2">
+      <div className="md:w-1/2 w-[80vw] m-auto bg-primary rounded-full overflow-hidden grid grid-cols-2 items-center -mt-6 z-20 absolute left-1/2 -translate-x-1/2">
         <Input
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
           placeholder="Search "
-          className="rounded bg-primary text-accent border-none"
+          className="rounded bg-primary text-accent border-none text-center"
         />
-        <CiSearch className="mr-4 h-10 text-accent text-3xl" />
+        {/* gender */}
+        <Select
+          onValueChange={(value) => {
+            setGender(value);
+          }}
+        >
+          <SelectTrigger className="border-0 border-l-2">
+            <SelectValue placeholder="Select your Gender" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectItem value="male">Male</SelectItem>{" "}
+              <SelectItem value="female">Female</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
       {loading ? (
         <Loading />

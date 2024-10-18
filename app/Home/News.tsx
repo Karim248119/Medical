@@ -1,37 +1,33 @@
 import React, { useEffect, useState } from "react";
 import NewsCard from "@/components/cards/NewsCard";
 import Header from "@/components/shared/Header";
-import { NewsArticle } from "@/types";
+import { NewsArticle, Resource } from "@/types";
 import Loading from "@/components/Loading";
 
 export default function News() {
-  const [news, setNews] = useState<NewsArticle[]>([]);
+  const [news, setNews] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  const NEWS_API = `https://newsapi.org/v2/top-headlines?category=health&page=1&apiKey=0b4931e434024a13940b07eb5df2ab99`;
+  const API_URL = `https://health.gov/myhealthfinder/api/v3/myhealthfinder.json`;
 
   useEffect(() => {
-    const fetchNews = async () => {
+    const fetchData = async () => {
+      setLoading(true);
       try {
-        const response = await fetch(NEWS_API);
-        const data = await response.json();
-        const filteredNews = Array.isArray(data.articles)
-          ? data.articles.filter(
-              (article: NewsArticle) =>
-                article.title !== "[Removed]" &&
-                article.description !== "[Removed]" &&
-                article.source.name !== "[Removed]"
-            )
-          : [];
-
-        setNews(filteredNews);
+        const response = await fetch(API_URL);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const result = await response.json();
+        setNews(result.Result);
       } catch (error) {
-        console.error("Failed to fetch news:", error);
+        console.error(error);
       } finally {
         setLoading(false);
       }
     };
-    fetchNews();
+
+    fetchData();
   }, []);
 
   return (
@@ -45,8 +41,8 @@ export default function News() {
         <Loading />
       ) : (
         <div className="grid md:grid-rows-2 md:grid-cols-2 md:px-20 px-3 md:gap-10 gap-5">
-          {news.slice(0, 4).map((item, index) => (
-            <NewsCard key={index} news={item} />
+          {news.Resources?.all?.Resource?.slice(0, 4).map((item: any) => (
+            <NewsCard key={item.Id} news={item} />
           ))}
         </div>
       )}
