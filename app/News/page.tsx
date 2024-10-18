@@ -51,7 +51,7 @@ export default function HealthFinder() {
         <Input
           value={age}
           onChange={(e) => setAge(e.target.value)}
-          placeholder="age "
+          placeholder="Age"
           className="rounded bg-primary text-accent border-none text-center"
         />
         {/* gender */}
