@@ -51,7 +51,7 @@ export default function HealthFinder() {
         <Input
           value={age}
           onChange={(e) => setAge(e.target.value)}
-          placeholder="Search "
+          placeholder="age "
           className="rounded bg-primary text-accent border-none text-center"
         />
         {/* gender */}
@@ -65,7 +65,7 @@ export default function HealthFinder() {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectItem value="male">Male</SelectItem>{" "}
+              <SelectItem value="male">Male</SelectItem>
               <SelectItem value="female">Female</SelectItem>
             </SelectGroup>
           </SelectContent>
