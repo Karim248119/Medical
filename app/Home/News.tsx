@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import NewsCard from "@/components/cards/NewsCard";
 import Header from "@/components/shared/Header";
-import { NewsArticle, Resource } from "@/types";
 import Loading from "@/components/Loading";
 
 export default function News() {
-  const [news, setNews] = useState<any>(null);
+  const [news, setNews] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const API_URL = `https://health.gov/myhealthfinder/api/v3/myhealthfinder.json`;
+  const API_URL = `https://newsdata.io/api/1/latest?apikey=pub_569666be30748bb062f08ac773670ca76d0d2&category=health`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,10 +17,15 @@ export default function News() {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        const result = await response.json();
-        setNews(result.Result);
+
+        const data = await response.json();
+        if (data.results) {
+          setNews(data.results);
+        } else {
+          console.log("No news data found");
+        }
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }
@@ -41,9 +45,13 @@ export default function News() {
         <Loading />
       ) : (
         <div className="grid md:grid-rows-2 md:grid-cols-2 md:px-20 px-3 md:gap-10 gap-5">
-          {news.Resources?.all?.Resource?.slice(0, 4).map((item: any) => (
-            <NewsCard key={item.Id} news={item} />
-          ))}
+          {news.length > 0 ? (
+            news
+              .slice(0, 4)
+              .map((item) => <NewsCard key={item.id} news={item} />)
+          ) : (
+            <div>No news available</div>
+          )}
         </div>
       )}
     </div>

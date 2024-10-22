@@ -5,6 +5,7 @@ import {
 } from "react-icons/fa6";
 import { FaBriefcaseMedical, FaUsers } from "react-icons/fa";
 import { IoCalendar, IoArrowBackCircle } from "react-icons/io5";
+import { BiCalendar } from "react-icons/bi";
 
 export const UserLinks = [
   { name: "Home", path: "/" },
@@ -25,6 +26,6 @@ export const AdminLinks = [
   },
   { name: " Services", path: "/admin/services", icon: FaHandHoldingMedical },
   { name: " News", path: "/admin/news", icon: FaNewspaper },
-  { name: " appointments", path: "/admin/appointments", icon: IoCalendar },
+  { name: " appoint", path: "/admin/appointments", icon: BiCalendar },
   { name: "Home", path: "/", icon: IoArrowBackCircle },
 ];

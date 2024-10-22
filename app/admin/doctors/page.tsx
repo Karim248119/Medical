@@ -87,7 +87,7 @@ const DoctorsPage = () => {
                 <TableHead>Name</TableHead>
                 <TableHead>Speciality</TableHead>
                 <TableHead>Phone</TableHead>
-                <TableHead>Resume</TableHead>
+                {/* <TableHead>Resume</TableHead> */}
                 <TableHead>Contacts</TableHead>
                 <TableHead>Actions</TableHead>
               </TableRow>
@@ -115,10 +115,10 @@ const DoctorsPage = () => {
                   ) : (
                     <TableCell>-</TableCell>
                   )}
-                  <TableCell>{`${doctor.resume.substring(
+                  {/* <TableCell>{`${doctor.resume.substring(
                     0,
                     40
-                  )}...`}</TableCell>
+                  )}...`}</TableCell> */}
                   {doctor.contacts ? (
                     <TableCell className="text-xl">
                       <div className="flex justify-center items-center gap-3">

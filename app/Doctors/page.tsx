@@ -153,9 +153,7 @@ export default function Doctors() {
       )}
 
       <Quotes />
-      <div className="mb-20">
-        <News />
-      </div>
+      <div className="mb-20"></div>
     </UserLayout>
   );
 }

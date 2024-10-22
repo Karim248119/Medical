@@ -34,14 +34,14 @@ export interface User {
   role?: string;
 }
 
-export interface News {
-  _id?: string;
-  title: string;
-  img: string;
-  date: string;
-  category: string;
-  content: string;
-}
+// export interface News {
+//   _id?: string;
+//   title: string;
+//   img: string;
+//   date: string;
+//   category: string;
+//   content: string;
+// }
 
 export interface NewsArticle {
   source: {
@@ -80,20 +80,32 @@ export interface Appointment {
   };
 }
 
-export interface Resource {
-  Type: string;
-  Id: string;
-  Title: string;
-  TranslationId: string;
-  TranslationTitle: string;
-  Categories: string;
-  Populations: string;
-  MyHFTitle: string;
-  MyHFDescription: string; // This could be HTML
-  MyHFCategory: string;
-  MyHFCategoryHeading: string; // This could be HTML
-  LastUpdate: string;
-  ImageUrl: string;
-  ImageAlt: string;
-  AccessibleVersion: string;
+export interface News {
+  article_id: string;
+  title: string;
+  link: string;
+  keywords: string[];
+  creator: string[];
+  video_url: string | null;
+  description: string;
+  content: string;
+  pubDate: string;
+  pubDateTZ: string;
+  image_url: string;
+  source: {
+    id: string;
+    priority: number;
+    name: string;
+    url: string;
+    icon: string;
+  };
+  language: string;
+  country: string[];
+  category: string[];
+  ai_tag: string;
+  sentiment: string;
+  sentiment_stats: string;
+  ai_region: string;
+  ai_org: string;
+  duplicate: boolean;
 }
