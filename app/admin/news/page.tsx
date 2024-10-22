@@ -20,7 +20,7 @@ import { IMG_URL } from "@/api";
 import DeleteBtn from "@/components/shared/DeleteBtn";
 
 const NewsPage = () => {
-  const [news, setNews] = useState<News[]>([]);
+  const [news, setNews] = useState<any[]>([]);
   const [query, setQuery] = useState("");
 
   useEffect(() => {
