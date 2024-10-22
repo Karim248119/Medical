@@ -5,7 +5,6 @@ import UserLayout from "@/components/layout/UserLayout";
 export default function Home() {
   return (
     <main className=" text-black bg-white">
-      <title>Medical</title>
       <HomePage />
     </main>
   );

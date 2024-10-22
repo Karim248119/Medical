@@ -43,7 +43,7 @@ export default function Navbar() {
   return (
     <nav className=" fixed top-0 left-0 w-screen z-50">
       <div className=" h-20 bg-white w-full flex justify-center md:justify-between items-center md:px-32 z-50">
-        <Logo />
+        <Logo variant={3} className="hidden md:block" />
         <div className="flex gap-4 flex-wrap justify-center items-center">
           {Headers.map((header, index) => {
             return (
@@ -111,9 +111,7 @@ export default function Navbar() {
               </Link>
             )}
 
-            <p className=" text-accent uppercase font-serif text-xl block md:hidden ">
-              MED<span className=" text-white">ECAL</span>
-            </p>
+            <Logo variant={2} className="w-10 md:hidden" />
           </div>
 
           <div className="sm:hidden flex gap-2 ">

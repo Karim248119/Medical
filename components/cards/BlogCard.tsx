@@ -47,7 +47,7 @@ export default function BlogCard({ news }: { news: News }) {
           {news?.title}
         </h2>
         <p className="text-black/50 md:text-sm text-xs">
-          {news?.description.replace(/<\/?p>/g, "").trim()}
+          {news?.description?.replace(/<\/?p>/g, "").trim()}
         </p>
         <div className="flex gap-3 ">
           <Link href={news?.link}>
