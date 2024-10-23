@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/pagination";
 import { NEWS_API_KEY } from "@/api";
 import { News } from "@/types";
+import { useDebounce } from "use-debounce";
 
 export default function NewsPage() {
   const [news, setNews] = useState<News[]>([]);
@@ -26,7 +27,9 @@ export default function NewsPage() {
   const [nextPage, setNextPage] = useState<string | null>(
     "1729528200053930440"
   );
-  const [pageHistory, setPageHistory] = useState<string[]>([]); // History of page tokens
+  const [pageHistory, setPageHistory] = useState<string[]>([]);
+
+  const [debouncedQuery] = useDebounce(query, 500);
 
   const API_URL = `https://newsdata.io/api/1/latest?apikey=${NEWS_API_KEY}&category=health&page=${
     nextPage || "1729528200053930440"
@@ -59,7 +62,7 @@ export default function NewsPage() {
 
   useEffect(() => {
     fetchData(nextPage);
-  }, [page, query]);
+  }, [page, debouncedQuery]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });

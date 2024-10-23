@@ -65,7 +65,6 @@ export default function SignupPage() {
   return (
     <div className="md:grid grid-cols-2 h-screen">
       <div className="hidden md:flex">
-        <Logo className="absolute top-10 left-10" />
         <Image
           src={IMGS.signup}
           width={10000}

@@ -34,6 +34,7 @@
     "react-youtube": "^10.1.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
+    "use-debounce": "^10.0.4",
     "video.js": "^8.18.1",
     "videojs-youtube": "^3.0.1",
     "zod": "^3.23.8"

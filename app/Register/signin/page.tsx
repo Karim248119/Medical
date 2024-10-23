@@ -48,7 +48,6 @@ export default function SigninPage() {
   return (
     <div className="md:grid grid-cols-2 h-screen">
       <div className="flex">
-        <Logo className="absolute top-10 left-10" />
         <Image
           src={IMGS.signin}
           width={10000}
