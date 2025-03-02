@@ -31,9 +31,9 @@ export default function NewsPage() {
 
   const [debouncedQuery] = useDebounce(query, 500);
 
-  const API_URL = `https://newsdata.io/api/1/latest?apikey=${NEWS_API_KEY}&category=health&page=${
-    nextPage || "1729528200053930440"
-  }&q=${query || "general"}`;
+  const API_URL = `https://newsdata.io/api/1/latest?apikey=pub_569666be30748bb062f08ac773670ca76d0d2&category=health&q=${
+    query || "general"
+  }`;
 
   const fetchData = async (pageToken: string | null) => {
     setLoading(true);

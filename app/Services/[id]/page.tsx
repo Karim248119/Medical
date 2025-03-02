@@ -62,7 +62,7 @@ function ServicePage() {
                 >
                   <div className="w-1/3">
                     <img
-                      src={IMG_URL + item.icon}
+                      src={IMG_URL + item.webIcon}
                       alt={item.title}
                       className="md:h-10 h-5 aspect-square mx-auto"
                     />

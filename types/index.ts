@@ -25,6 +25,7 @@ export interface Speciality {
 export interface Service extends Speciality {
   videoSrc: string;
   icon: string;
+  webIcon: string;
 }
 
 export interface User {

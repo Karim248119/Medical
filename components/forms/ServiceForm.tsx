@@ -18,6 +18,7 @@ const ServiceForm = ({ service }: { service?: Service }) => {
   const [title, setTitle] = useState(service?.title || "");
   const [img, setImg] = useState<File | null>(null);
   const [icon, setIcon] = useState<File | null>(null);
+  const [webIcon, setWebIcon] = useState<File | null>(null);
   const [videoSrc, setVideoSrc] = useState<string>(service?.videoSrc || "");
   const [description, setDescription] = useState<string>(
     service?.description || ""
@@ -42,6 +43,9 @@ const ServiceForm = ({ service }: { service?: Service }) => {
     if (icon) {
       formData.append("icon", icon);
     }
+    if (webIcon) {
+      formData.append("webIcon", webIcon);
+    }
 
     try {
       let response;
@@ -59,6 +63,7 @@ const ServiceForm = ({ service }: { service?: Service }) => {
           setTitle("");
           setImg(null);
           setIcon(null);
+          setWebIcon(null);
           setVideoSrc("");
           setAlert({
             type: "success",
@@ -146,17 +151,21 @@ const ServiceForm = ({ service }: { service?: Service }) => {
           className="w-full p-2 border border-gray-300 focus:outline-none bg-primary"
         />
         {/* Image Input */}
-        <Input
-          type="file"
-          id="img"
-          accept="image/*"
-          onChange={(e) => {
-            if (e.target.files && e.target.files.length > 0) {
-              setImg(e.target.files[0]);
-            }
-          }}
-          className="w-full p-2 border border-gray-300  bg-primary"
-        />
+        <div className="flex flex-row items-center ">
+          <Input
+            type="file"
+            placeholder="Image"
+            id="img"
+            accept="image/*"
+            onChange={(e) => {
+              if (e.target.files && e.target.files.length > 0) {
+                setImg(e.target.files[0]);
+              }
+            }}
+            className="w-full p-2 border border-gray-300  bg-primary"
+          />
+        </div>
+
         {/* Icon Input */}
         <Input
           type="file"
@@ -165,6 +174,18 @@ const ServiceForm = ({ service }: { service?: Service }) => {
           onChange={(e) => {
             if (e.target.files && e.target.files.length > 0) {
               setIcon(e.target.files[0]);
+            }
+          }}
+          className="w-full p-2 border border-gray-300 bg-primary"
+        />
+        {/* webIcon Input */}
+        <Input
+          type="file"
+          accept="image/*"
+          placeholder="Add icon"
+          onChange={(e) => {
+            if (e.target.files && e.target.files.length > 0) {
+              setWebIcon(e.target.files[0]);
             }
           }}
           className="w-full p-2 border border-gray-300 bg-primary"
